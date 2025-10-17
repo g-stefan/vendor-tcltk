@@ -1,0 +1,16 @@
+{
+	"solution": {
+		"name" : "vendor-tcltk",
+		"type" : "xyo-cpp",
+		"projects": [
+			{
+				"name" : "tcltk",
+				"SPDX-License-Identifier": "TCL",
+				"sourceLink" : "https://www.tcl-lang.org/software/tcltk/",
+				"version" : "9.0.2",
+				"noVersion" : true
+			}
+		],
+		"releaseName" : "tcltk"
+	}
+}
