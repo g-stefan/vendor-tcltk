@@ -1,5 +1,6 @@
 {
 	"solution": {
+		"namespace" : "xyo",
 		"name" : "vendor-tcltk",
 		"type" : "xyo-cpp",
 		"projects": [

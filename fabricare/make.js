@@ -37,15 +37,18 @@ runInPath("source/tcl/win", function() {
 	Shell.system("cmd.exe /C \"call buildall.vc.bat\"");
 });
 
-Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_VC1944/*.dll","output/bin");
-Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_VC1944/*.exe","output/bin");
-Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_VC1944/*.zip","output/bin");
-Shell.copyFile("source/tcl/win/Release_AMD64_VC1944/tclsh90.exe", "output/bin/tclsh.exe");
+//var vcVer="VC1944";
+var vcVer="VC1951";
+
+Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_"+vcVer+"/*.dll","output/bin");
+Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_"+vcVer+"/*.exe","output/bin");
+Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_"+vcVer+"/*.zip","output/bin");
+Shell.copyFile("source/tcl/win/Release_AMD64_"+vcVer+"/tclsh90.exe", "output/bin/tclsh.exe");
 
 Shell.copyFilesToDirectory("source/tcl/generic/*.h","output/include/tcl");
 Shell.copyFilesToDirectory("source/tcl/win/*.h","output/include/tcl");
 
-Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_VC1944/*.lib","output/lib");
+Shell.copyFilesToDirectory("source/tcl/win/Release_AMD64_"+vcVer+"/*.lib","output/lib");
 
 // TK
 
@@ -53,7 +56,7 @@ if (Fabricare.isDynamic()) {
 	Shell.copyFile("fabricare/source/tk.buildall.vc.bat","source/tk/win/buildall.vc.bat");
 };
 if (Fabricare.isStatic()) {
-	Shell.copyFile("source/tcl/win/Release_AMD64_VC1944/libtcl9.0.2.zip","source/tk/tcl/win/Release_AMD64_VC1944/libtcl9.0.2.zip");
+	Shell.copyFile("source/tcl/win/Release_AMD64_"+vcVer+"/libtcl9.0.2.zip","source/tk/tcl/win/Release_AMD64_"+vcVer+"/libtcl9.0.2.zip");
 	Shell.copyFile("fabricare/source/tk.buildall.vc.static.bat","source/tk/win/buildall.vc.bat");
 };
 
@@ -63,17 +66,17 @@ runInPath("source/tk/win", function() {
 	Shell.system("cmd.exe /C \"call buildall.vc.bat\"");
 });
 
-Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_VC1944/*.dll","output/bin");
-Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_VC1944/*.exe","output/bin");
-Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_VC1944/*.zip","output/bin");
-Shell.copyFile("source/tk/win/Release_AMD64_VC1944/wish90.exe", "output/bin/wish.exe");
+Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_"+vcVer+"/*.dll","output/bin");
+Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_"+vcVer+"/*.exe","output/bin");
+Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_"+vcVer+"/*.zip","output/bin");
+Shell.copyFile("source/tk/win/Release_AMD64_"+vcVer+"/wish90.exe", "output/bin/wish.exe");
 
 Shell.copyFilesToDirectory("source/tk/generic/*.h","output/include/tk");
 Shell.copyFilesToDirectory("source/tk/generic/ttk/*.h","output/include/tk/ttk");
 Shell.copyFilesToDirectory("source/tk/win/*.h","output/include/tk");
 Shell.copyFilesToDirectory("source/tk/xlib/X11/*.*","output/include/tk/X11");
 
-Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_VC1944/*.lib","output/lib");
+Shell.copyFilesToDirectory("source/tk/win/Release_AMD64_"+vcVer+"/*.lib","output/lib");
 
 if (Fabricare.isStatic()) {
 	Shell.rename("output/lib/tcl9dde14sx.lib","output/lib/tcl9dde14.lib");
