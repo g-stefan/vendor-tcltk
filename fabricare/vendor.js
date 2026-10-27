@@ -27,7 +27,7 @@ if (Shell.hasEnv("VENDOR_SOURCE_AUTH")) {
 	vendorSourceAuth = Shell.getenv("VENDOR_SOURCE_AUTH");
 };
 
-exitIf(Shell.system("curl --insecure --location " + vendorSourceGit + "/vendor-" + Project.name + "/releases/download/v" + Project.version + "/" + Project.vendor + ".7z "+vendorSourceAuth+" --output archive/" + Project.vendor + ".7z"));
+exitIf(Shell.system("curl --ca-native --location " + vendorSourceGit + "/vendor-" + Project.name + "/releases/download/v" + Project.version + "/" + Project.vendor + ".7z "+vendorSourceAuth+" --output archive/" + Project.vendor + ".7z"));
 if (Shell.getFileSize("archive/" + Project.vendor + ".7z") > 32768) {
 	return;
 };
@@ -37,12 +37,12 @@ Shell.removeFile("archive/" + Project.vendor + ".7z");
 runInPath("archive", function() {
 	webLink = "http://prdownloads.sourceforge.net/tcl/tcl902-src.zip";
 	if (!Shell.fileExists(Project.vendor + ".zip")) {
-		exitIf(Shell.system("curl --insecure --location " + webLink + " --output " + Project.vendor + "-tcl.zip"));
+		exitIf(Shell.system("curl --ca-native --location " + webLink + " --output " + Project.vendor + "-tcl.zip"));
 	};
 
 	webLink = "http://prdownloads.sourceforge.net/tcl/tk902-src.zip";
 	if (!Shell.fileExists(Project.vendor + ".zip")) {
-		exitIf(Shell.system("curl --insecure --location " + webLink + " --output " + Project.vendor + "-tk.zip"));
+		exitIf(Shell.system("curl --ca-native --location " + webLink + " --output " + Project.vendor + "-tk.zip"));
 	};
 
 	exitIf(Shell.system("7z x " + Project.vendor + "-tcl.zip -aoa -o."));
